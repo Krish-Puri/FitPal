@@ -1,0 +1,124 @@
+{
+  "targets": {
+    "training_split": {
+      "model_name": "Random Forest",
+      "best_parameters": {
+        "max_depth": "10",
+        "min_samples_split": "5",
+        "n_estimators": "200"
+      },
+      "performance": {
+        "test_f1": 0.6789251598038679,
+        "train_f1": 0.9028164868036479,
+        "test_r2": null,
+        "train_r2": null,
+        "test_rmse": null,
+        "overfitting": 0.22389132699977998
+      }
+    },
+    "training_days": {
+      "model_name": "Gradient Boosting",
+      "best_parameters": {
+        "n_estimators": "50",
+        "max_depth": "3",
+        "learning_rate": "0.05"
+      },
+      "performance": {
+        "test_f1": null,
+        "train_f1": null,
+        "test_r2": 0.44171846896885103,
+        "train_r2": 0.45342160226558303,
+        "test_rmse": 0.7180228434686923,
+        "overfitting": 0.011703133296732005
+      }
+    },
+    "weekly_volume": {
+      "model_name": "Gradient Boosting",
+      "best_parameters": {
+        "n_estimators": "50",
+        "max_depth": "3",
+        "learning_rate": "0.05"
+      },
+      "performance": {
+        "test_f1": null,
+        "train_f1": null,
+        "test_r2": 0.4859904432967197,
+        "train_r2": 0.49414655600426716,
+        "test_rmse": 2.623021544829575,
+        "overfitting": 0.008156112707547458
+      }
+    },
+    "intensity": {
+      "model_name": "Gradient Boosting",
+      "best_parameters": {
+        "n_estimators": "200",
+        "max_depth": "3",
+        "learning_rate": "0.05"
+      },
+      "performance": {
+        "test_f1": null,
+        "train_f1": null,
+        "test_r2": 0.7226580660436228,
+        "train_r2": 0.7735837572291743,
+        "test_rmse": 5.019986462685136,
+        "overfitting": 0.05092569118555146
+      }
+    },
+    "cardio_minutes": {
+      "model_name": "Gradient Boosting",
+      "best_parameters": {
+        "n_estimators": "50",
+        "max_depth": "3",
+        "learning_rate": "0.05"
+      },
+      "performance": {
+        "test_f1": null,
+        "train_f1": null,
+        "test_r2": 0.5639540973961134,
+        "train_r2": 0.5947972776256301,
+        "test_rmse": 30.238639733356912,
+        "overfitting": 0.03084318022951671
+      }
+    },
+    "expected_strength_gain": {
+      "model_name": "Gradient Boosting",
+      "best_parameters": {
+        "n_estimators": "200",
+        "max_depth": "3",
+        "learning_rate": "0.05"
+      },
+      "performance": {
+        "test_f1": null,
+        "train_f1": null,
+        "test_r2": 0.9431367792043439,
+        "train_r2": 0.9519012076226213,
+        "test_rmse": 0.17382602513701478,
+        "overfitting": 0.008764428418277403
+      }
+    }
+  },
+  "training_info": {
+    "training_samples": 4000,
+    "test_samples": 1000,
+    "features": [
+      "age",
+      "height",
+      "weight",
+      "body_fat",
+      "bench_press",
+      "squat",
+      "deadlift",
+      "daily_steps",
+      "training_exp",
+      "bmi",
+      "total_lifted",
+      "strength_to_weight",
+      "goal_muscle_gain",
+      "goal_fat_loss",
+      "goal_strength",
+      "goal_general_fitness",
+      "gender_encoded"
+    ],
+    "training_date": "2025-11-11 09:31:31"
+  }
+}
