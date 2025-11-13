@@ -82,3 +82,25 @@ le_split = model_package['label_encoder_split']
 feature_names = model_package['feature_names']
 target_names = model_package['target_names']
 
+# Display model info
+with st.expander("ℹ️ About This AI System"):
+    st.markdown("### 6 Specialized Models Working Together:")
+    
+    cols = st.columns(2)
+    for idx, (target_name, model_info) in enumerate(models.items()):
+        col = cols[idx % 2]
+        with col:
+            st.markdown(f"**{target_name.replace('_', ' ').title()}**")
+            st.caption(f"Model: {model_info['model_name']}")
+            perf = model_info['performance']
+            if perf['test_f1']:
+                st.caption(f"F1 Score: {perf['test_f1']:.3f}")
+            else:
+                st.caption(f"R² Score: {perf['test_r2']:.3f}")
+    
+    st.caption(f"🗓️ Trained: {model_package['training_date']}")
+    st.caption(f"📊 Dataset: {model_package['dataset_size']:,} samples")
+
+# Sidebar for user inputs
+st.sidebar.header("📊 Your Current Stats")
+
