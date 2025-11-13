@@ -67,3 +67,18 @@ def load_models():
         return None
 
 model_package = load_models()
+
+# Title
+st.markdown('<h1 class="main-header">💪 AI Fitness Training Optimizer</h1>', unsafe_allow_html=True)
+st.markdown("### Get comprehensive training recommendations powered by 6 specialized ML models")
+
+if model_package is None:
+    st.stop()
+
+# Extract components
+models = model_package['models']
+scaler = model_package['scaler']
+le_split = model_package['label_encoder_split']
+feature_names = model_package['feature_names']
+target_names = model_package['target_names']
+
