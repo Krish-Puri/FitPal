@@ -234,3 +234,29 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
             <p>Expected Strength Gain</p>
         </div>
         """, unsafe_allow_html=True)
+
+  # Detailed Training Parameters
+    st.markdown("---")
+    st.header("📊 Complete Training Parameters")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("### 🏋️ Volume & Intensity")
+        st.markdown(f"""
+        - **Weekly Volume:** {int(predictions['weekly_volume']['value'])} sets per muscle group
+        - **Training Intensity:** {int(predictions['intensity']['value'])}% of 1RM
+        - **Training Days:** {int(predictions['training_days']['value'])} days per week
+        - **Rep Ranges:** {'3-5 reps (strength)' if predictions['intensity']['value'] > 85 else '6-10 reps (hypertrophy)' if predictions['intensity']['value'] > 70 else '10-15 reps (endurance)'}
+        - **Rest Between Sets:** {'3-5 minutes' if predictions['intensity']['value'] > 85 else '90-120 seconds' if predictions['intensity']['value'] > 70 else '60-90 seconds'}
+        """)
+    
+    with col2:
+        st.markdown("### 🏃 Cardio & Recovery")
+        st.markdown(f"""
+        - **Cardio Duration:** {int(predictions['cardio_minutes']['value'])} minutes per week
+        - **Cardio Type:** {'HIIT + LISS mix' if predictions['cardio_minutes']['value'] > 150 else 'Moderate LISS'}
+        - **Sessions:** {int(predictions['cardio_minutes']['value'] / 30)} sessions (~30 min each)
+        - **Rest Days:** {7 - int(predictions['training_days']['value'])} per week
+        - **Active Recovery:** Light walking, mobility work
+        """)
