@@ -149,5 +149,27 @@ with col3:
 with col4:
     st.metric("Experience", f"{training_exp} years")
 
-
+# Prediction button
+if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use_container_width=True):
+    
+    # Prepare features
+    user_features = pd.DataFrame([{
+        'age': age,
+        'height': height,
+        'weight': weight,
+        'body_fat': body_fat,
+        'bench_press': bench_press,
+        'squat': squat,
+        'deadlift': deadlift,
+        'daily_steps': daily_steps,
+        'training_exp': training_exp,
+        'bmi': bmi,
+        'total_lifted': total_lifted,
+        'strength_to_weight': strength_to_weight,
+        'goal_muscle_gain': 1 if goal_muscle_gain else 0,
+        'goal_fat_loss': 1 if goal_fat_loss else 0,
+        'goal_strength': 1 if goal_strength else 0,
+        'goal_general_fitness': 1 if goal_general_fitness else 0,
+        'gender_encoded': 1 if gender == "Male" else 0
+    }])
 
