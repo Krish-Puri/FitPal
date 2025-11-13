@@ -173,3 +173,21 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
         'gender_encoded': 1 if gender == "Male" else 0
     }])
 
+    user_features = user_features[feature_names]
+    user_features_scaled = scaler.transform(user_features)
+    
+    # Make predictions for all 6 targets
+    predictions = {}
+    
+    # Training Split (Classification)
+    split_model = models['training_split']['model']
+    split_pred_encoded = split_model.predict(user_features_scaled)[0]
+    split_proba = split_model.predict_proba(user_features_scaled)[0]
+    predicted_split = le_split.inverse_transform([split_pred_encoded])[0]
+    split_confidence = split_proba[split_pred_encoded] * 100
+    
+    predictions['training_split'] = {
+        'value': predicted_split,
+        'confidence': split_confidence,
+        'probabilities': dict(zip(le_split.classes_, split_proba * 100))
+    }
