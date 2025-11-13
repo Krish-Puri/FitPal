@@ -325,4 +325,38 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
         st.metric("Intensity", f"{int(predictions['intensity']['value'])}%")
         st.metric("Cardio", f"{int(predictions['cardio_minutes']['value'])} min")
 
-  
+  # Progress Projection
+    st.markdown("---")
+    st.header("📈 3-Month Strength Projection")
+    
+    monthly_gain = predictions['expected_strength_gain']['value']
+    
+    months = ['Current', 'Month 1', 'Month 2', 'Month 3']
+    bench_proj = [bench_press + (monthly_gain * i) for i in range(4)]
+    squat_proj = [squat + (monthly_gain * 1.2 * i) for i in range(4)]
+    deadlift_proj = [deadlift + (monthly_gain * 1.3 * i) for i in range(4)]
+    
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=months, y=bench_proj, mode='lines+markers', 
+                             name='Bench Press', line=dict(color='#667eea', width=3),
+                             marker=dict(size=10)))
+    fig.add_trace(go.Scatter(x=months, y=squat_proj, mode='lines+markers', 
+                             name='Squat', line=dict(color='#764ba2', width=3),
+                             marker=dict(size=10)))
+    fig.add_trace(go.Scatter(x=months, y=deadlift_proj, mode='lines+markers', 
+                             name='Deadlift', line=dict(color='#f093fb', width=3),
+                             marker=dict(size=10)))
+    
+    fig.update_layout(
+        title="Projected Strength Progression (Based on AI Model)",
+        xaxis_title="Timeline",
+        yaxis_title="Weight (kg)",
+        hovermode='x unified',
+        template='plotly_white',
+        height=400
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
+    
+    st.info(f"💡 Based on your profile, our AI predicts you'll gain approximately **{monthly_gain:.1f} kg per month** on your main lifts.")
+
