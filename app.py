@@ -360,3 +360,48 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
     
     st.info(f"💡 Based on your profile, our AI predicts you'll gain approximately **{monthly_gain:.1f} kg per month** on your main lifts.")
 
+  # Success Tips
+    st.markdown("---")
+    st.header("🌟 Keys to Success")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        #### 💪 Training Essentials
+        - **Progressive Overload**: Increase weight when you hit target reps
+        - **Track Everything**: Log all workouts, weights, and reps
+        - **Form First**: Perfect technique before adding weight
+        - **Warm Up**: 5-10 minutes before each session
+        - **Deload**: Take a light week every 6-8 weeks
+        """)
+        
+        st.markdown("""
+        #### 😴 Recovery Protocol
+        - **Sleep**: 7-9 hours per night (non-negotiable!)
+        - **Stress Management**: High stress kills gains
+        - **Hydration**: 3-4 liters of water daily
+        - **Active Recovery**: Light walking on rest days
+        - **Listen to Your Body**: Rest if truly needed
+        """)
+    
+    with col2:
+        protein_target = weight * 1.8
+        
+        st.markdown(f"""
+        #### 🍽️ Nutrition Guidelines
+        - **Protein**: {protein_target:.0f}g per day (1.8g/kg bodyweight)
+        - **Calories**: {'Surplus (+300-500)' if goal_muscle_gain else 'Deficit (-300-500)' if goal_fat_loss else 'Maintenance'}
+        - **Meal Timing**: Protein within 2 hours of training
+        - **Whole Foods**: 80% minimally processed
+        - **Consistency**: Hitting targets is more important than timing
+        """)
+        
+        st.markdown("""
+        #### 🎯 Mindset & Consistency
+        - **Patience**: Real results take 8-12 weeks minimum
+        - **Consistency > Perfection**: Don't skip workouts
+        - **Track Progress**: Photos + measurements > scale
+        - **Trust the Process**: The AI model is trained on thousands of profiles
+        - **Adjust as Needed**: Re-evaluate every 4-6 weeks
+        """)
