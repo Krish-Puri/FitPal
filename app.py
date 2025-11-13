@@ -302,3 +302,27 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
         <p><strong>Sample Week:</strong> {split_info['example']}</p>
     </div>
     """, unsafe_allow_html=True)
+
+  # Confidence Breakdown
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("### 📊 Split Recommendation Confidence")
+        conf_df = pd.DataFrame(list(predictions['training_split']['probabilities'].items()),
+                               columns=['Split', 'Confidence'])
+        conf_df = conf_df.sort_values('Confidence', ascending=False)
+        
+        fig = px.bar(conf_df, x='Confidence', y='Split', orientation='h',
+                     color='Confidence', color_continuous_scale='Viridis',
+                     labels={'Confidence': 'Confidence (%)', 'Split': 'Training Split'})
+        fig.update_layout(showlegend=False, height=300)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        st.markdown("### 🔢 Predicted Values")
+        st.metric("Training Days", f"{int(predictions['training_days']['value'])}/week")
+        st.metric("Weekly Volume", f"{int(predictions['weekly_volume']['value'])} sets")
+        st.metric("Intensity", f"{int(predictions['intensity']['value'])}%")
+        st.metric("Cardio", f"{int(predictions['cardio_minutes']['value'])} min")
+
+  
