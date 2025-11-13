@@ -104,3 +104,36 @@ with st.expander("ℹ️ About This AI System"):
 # Sidebar for user inputs
 st.sidebar.header("📊 Your Current Stats")
 
+# Basic Information
+st.sidebar.subheader("Basic Information")
+age = st.sidebar.number_input("Age", min_value=18, max_value=80, value=25, step=1)
+gender = st.sidebar.selectbox("Gender", ["Male", "Female"])
+height = st.sidebar.number_input("Height (cm)", min_value=140, max_value=220, value=175, step=1)
+weight = st.sidebar.number_input("Weight (kg)", min_value=40, max_value=200, value=75, step=1)
+body_fat = st.sidebar.slider("Body Fat %", min_value=5, max_value=45, value=15, step=1)
+
+st.sidebar.subheader("Current Strength Levels")
+st.sidebar.caption("Enter your 1-rep max or estimated max (kg)")
+bench_press = st.sidebar.number_input("Bench Press (kg)", min_value=20, max_value=300, value=80, step=5)
+squat = st.sidebar.number_input("Squat (kg)", min_value=30, max_value=400, value=100, step=5)
+deadlift = st.sidebar.number_input("Deadlift (kg)", min_value=40, max_value=450, value=120, step=5)
+
+st.sidebar.subheader("Activity & Experience")
+daily_steps = st.sidebar.number_input("Average Daily Steps", min_value=1000, max_value=20000, value=8000, step=500)
+training_exp = st.sidebar.number_input("Training Experience (years)", min_value=0, max_value=30, value=2, step=1)
+
+st.sidebar.subheader("🎯 Your Goals")
+st.sidebar.caption("Select one or multiple")
+goal_muscle_gain = st.sidebar.checkbox("Muscle Gain 🏋️")
+goal_fat_loss = st.sidebar.checkbox("Fat Loss 🔥")
+goal_strength = st.sidebar.checkbox("Strength 💪", value=True)
+goal_general_fitness = st.sidebar.checkbox("General Fitness 🏃")
+
+if not any([goal_muscle_gain, goal_fat_loss, goal_strength, goal_general_fitness]):
+    st.sidebar.warning("⚠️ Please select at least one goal!")
+    st.stop()
+
+# Calculate derived metrics
+bmi = weight / ((height / 100) ** 2)
+total_lifted = bench_press + squat + deadlift
+strength_to_weight = total_lifted / weight
