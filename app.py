@@ -260,3 +260,45 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
         - **Rest Days:** {7 - int(predictions['training_days']['value'])} per week
         - **Active Recovery:** Light walking, mobility work
         """)
+
+  # Training Split Details
+    split_descriptions = {
+        'PPL': {
+            'name': 'Push/Pull/Legs',
+            'description': 'Train pushing muscles (chest, shoulders, triceps), pulling muscles (back, biceps), and legs on separate days.',
+            'ideal_for': 'Advanced lifters training 6 days/week',
+            'example': 'Mon: Push | Tue: Pull | Wed: Legs | Thu: Push | Fri: Pull | Sat: Legs | Sun: Rest'
+        },
+        'Upper_Lower': {
+            'name': 'Upper/Lower Split',
+            'description': 'Alternate between upper body and lower body training days.',
+            'ideal_for': 'Intermediate lifters, 4-5 days/week',
+            'example': 'Mon: Upper | Tue: Lower | Wed: Rest | Thu: Upper | Fri: Lower | Sat-Sun: Rest'
+        },
+        'Full_Body': {
+            'name': 'Full Body Workouts',
+            'description': 'Train all major muscle groups in each session.',
+            'ideal_for': 'Beginners or time-limited individuals',
+            'example': 'Mon: Full Body | Wed: Full Body | Fri: Full Body | Other days: Rest'
+        },
+        'Bro_Split': {
+            'name': 'Bro Split',
+            'description': 'Dedicate each day to specific muscle groups.',
+            'ideal_for': 'Advanced bodybuilders, high volume training',
+            'example': 'Mon: Chest | Tue: Back | Wed: Legs | Thu: Shoulders | Fri: Arms | Sat-Sun: Rest'
+        }
+    }
+    
+    split_info = split_descriptions[predictions['training_split']['value']]
+    
+    st.markdown("---")
+    st.header("📋 Training Split Details")
+    
+    st.markdown(f"""
+    <div class="recommendation-box">
+        <h3>🎯 {split_info['name']}</h3>
+        <p><strong>What it is:</strong> {split_info['description']}</p>
+        <p><strong>Ideal for:</strong> {split_info['ideal_for']}</p>
+        <p><strong>Sample Week:</strong> {split_info['example']}</p>
+    </div>
+    """, unsafe_allow_html=True)
