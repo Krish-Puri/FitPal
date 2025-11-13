@@ -405,3 +405,8 @@ if st.sidebar.button("🚀 Generate Complete Training Plan", type="primary", use
         - **Trust the Process**: The AI model is trained on thousands of profiles
         - **Adjust as Needed**: Re-evaluate every 4-6 weeks
         """)
+  
+  # Download Training Plan
+    st.markdown("---")
+    
+    training_plan_text = f"""
