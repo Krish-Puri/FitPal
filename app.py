@@ -137,3 +137,17 @@ if not any([goal_muscle_gain, goal_fat_loss, goal_strength, goal_general_fitness
 bmi = weight / ((height / 100) ** 2)
 total_lifted = bench_press + squat + deadlift
 strength_to_weight = total_lifted / weight
+
+# Main metrics
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.metric("BMI", f"{bmi:.1f}")
+with col2:
+    st.metric("Total Lifted", f"{total_lifted:.0f} kg")
+with col3:
+    st.metric("Strength/Weight", f"{strength_to_weight:.2f}")
+with col4:
+    st.metric("Experience", f"{training_exp} years")
+
+
+
