@@ -55,4 +55,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Load models
+@st.cache_resource
+def load_models():
+    try:
+        model_package = joblib.load('final_fitness_models_multi.pkl')
+        return model_package
+    except FileNotFoundError:
+        st.error("⚠️ Model file not found! Please upload 'final_fitness_models_multi.pkl'")
+        st.info("Run the complete ML pipeline in Google Colab first.")
+        return None
 
+model_package = load_models()
